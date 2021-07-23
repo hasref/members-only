@@ -1,0 +1,22 @@
+extends layout
+block content
+    div.form-container
+        form(action='/signup' method='POST')
+            h2.text-center Sign Up
+            div
+                label(for='firstname') First Name
+                input(id='firstname' name='firstname' )
+            div
+                label(for='lastname') Last Name
+                input(id='lastname' name='lastname' )
+            div
+                label(for='username') Username
+                input(id='username' name='username' )
+            div
+                label(for='password') Password
+                input(id='password' name='password' type='password')
+            div
+                label(id='confirm_password') Confirm Password
+                input(id='confirm_password' name='confirm' type='password')
+            button Submit
+
