@@ -4,4 +4,14 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    nav
+      ul
+        if user
+          li(class='flex-right')
+            a(href='/logout') Logout
+        else
+          li(class='flex-right')
+            a(href='/login') Login
+
+
     block content

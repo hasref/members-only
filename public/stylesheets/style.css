@@ -20,6 +20,23 @@ body {
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
+nav ul {
+  display: flex;
+  flex-direction: column;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav li a {
+  padding: 1em;
+}
+
+.flex-right {
+  align-self: flex-end;
+}
+
 a {
   color: #00b7ff;
 }
