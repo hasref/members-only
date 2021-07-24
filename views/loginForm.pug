@@ -1,0 +1,12 @@
+extends layout
+block content
+    div.form-container
+        form(action='/login' method='POST')
+            h2.text-center Login
+            div
+                label(for='username') Username
+                input(id='username' name='username' )
+            div
+                label(for='password') Password
+                input(id='password' name='password' type='password')
+            button Submit
