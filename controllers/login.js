@@ -1,7 +1,6 @@
 const passport = require('passport');
 
 exports.logIn = (req, res) => {
-  // show log in page
   res.render('loginForm');
 };
 // TODO: render login page with specific error
@@ -19,6 +18,7 @@ exports.logInUser = (req, res, next) => {
       if (err) {
         return next(err);
       }
+
       return res.redirect('/');
     });
   })(req, res, next);

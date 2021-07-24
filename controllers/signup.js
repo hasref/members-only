@@ -1,13 +1,11 @@
 const { body, validationResult, check } = require('express-validator');
 
-const passport = require('passport');
-
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const User = require('../models/user');
 
-exports.signUp = (req, res, next) => {
+exports.signUp = (req, res) => {
   res.render('signupForm');
 };
 
