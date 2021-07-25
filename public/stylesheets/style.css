@@ -71,7 +71,8 @@ form label {
   padding-bottom: 0.5em;
 }
 
-form input {
+form input,
+textarea {
   width: 100%;
   font-size: 1.1em;
   padding: 0.5em 0.75em;
@@ -97,4 +98,14 @@ form button {
 
 form button:hover {
   cursor: pointer;
+}
+
+.new-message {
+  width: 35em;
+}
+
+.new-message textarea {
+  height: 12em;
+  resize: none;
+  line-height: 1.6;
 }

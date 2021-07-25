@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    div.form-container
+        form(class='new-message' action='/createmessage' method='POST')
+            h2.text-center New Message 
+            div
+                label(for='messageTitle') Title
+                input(id='messageTitle' name='messageTitle')
+            div
+                label(for='messageBody') Message
+                textarea(id='messageBody' name='messageBody' )
+            button Submit
