@@ -19,7 +19,8 @@ block content
         div(class='message__content')
           div(class='message__header') 
             h4(class='message__title') #{message.messageTitle}
-            div(class='message__time') #{message.humanTime}
+            if user
+              div(class='message__time') #{message.humanTime}
           div(class='message__body') #{message.messageBody}
     else 
       p There are no messages to show. 
