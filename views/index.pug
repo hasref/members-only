@@ -3,6 +3,8 @@ extends layout
 block content
 
   main(class='messages')
+    if user
+      a(href='/new-message' class='new-message-btn' draggable='false') New
     each message in messages
       div(class='message-container')
         div(class='message__author-container')

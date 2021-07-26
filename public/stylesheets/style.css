@@ -140,9 +140,33 @@ form button:hover {
   max-width: 50em;
   margin: 0 auto;
   padding: 4em 0;
+  position: relative;
+}
+
+.new-message-btn {
+  float: right;
+
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  background-color: var(--burnt-sienna);
+  color: white;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.new-message-btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  border: 2px solid var(--persian-green);
+}
+
+.new-message-btn:focus {
+  transform: scale(1.05);
+  border: 2px solid var(--persian-green);
 }
 
 .message-container {
+  clear: both;
   display: grid;
   grid-template-columns: 1fr 4fr;
   min-height: 5em;
