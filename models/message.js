@@ -20,12 +20,11 @@ MessageSchema.virtual('humanTime').get(function () {
   ].map((val) => parseInt(val));
 
   if (days === 0) {
-    if (minutes === 1) {
+    if (minutes <= 1) {
       return '1 minute ago';
     } else if (minutes > 1 && minutes < 60) {
       return `${minutes} minutes ago`;
-    }
-    if (hours === 1) {
+    } else if (hours <= 1) {
       return '1 hour ago';
     } else if (hours > 1 && hours < 24) {
       return `${hours} hours ago`;
