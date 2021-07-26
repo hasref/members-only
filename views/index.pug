@@ -5,11 +5,11 @@ block content
   main(class='messages')
     each message in messages
       div(class='message-container')
-        div( class='message__author')
+        div(class='message__author-container')
           if user
-            span #{user}
+            span(class='message__author') #{user}
           else
-            a(href='/login') Login to find out.
+            a(href='/login' class='message__author') Login to discover.
         div(class='message__content')
           div(class='message__header') 
             h4(class='message__title') #{message.messageTitle}
