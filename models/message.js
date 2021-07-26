@@ -8,7 +8,7 @@ const MessageSchema = new mongoose.Schema({
   timestamp: { type: Date, default: Date.now },
 });
 
-MessageSchema.virtual('lastSeen').get(function () {
+MessageSchema.virtual('humanTime').get(function () {
   const now = DateTime.fromJSDate(new Date());
   const messageTime = DateTime.fromJSDate(this.timestamp);
   const diff = now.diff(messageTime);
@@ -28,7 +28,7 @@ MessageSchema.virtual('lastSeen').get(function () {
     if (hours === 1) {
       return '1 hour ago';
     } else if (hours > 1 && hours < 24) {
-      return '${hours} hours ago';
+      return `${hours} hours ago`;
     }
   }
   return messageTime.toLocaleString();
