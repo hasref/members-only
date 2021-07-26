@@ -1,6 +1,24 @@
 const Message = require('../models/message');
 const { body, validationResult } = require('express-validator');
 
+exports.showMessages = async (req, res, next) => {
+  try {
+    if (req.user) {
+      const messages = await Message.find({}).populate('author');
+      res
+        .render('index', { messages: messages, user: req.user.username })
+        .sort({ timestamp: 'desc' });
+    } else {
+      const messages = await Message.find({})
+        .select('-author')
+        .sort({ timestamp: 'desc' });
+      res.render('index', { messages: messages, user: false });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.newMessage = (req, res, next) => {
   // TODO: we could probably do such a check in a dedicated middleware
   if (req.user) {

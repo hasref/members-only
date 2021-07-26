@@ -6,10 +6,7 @@ const loginController = require('../controllers/login');
 const messageController = require('../controllers/message');
 
 /* GET home page. */
-router.get('/', function (req, res) {
-  console.log(req.user);
-  res.render('index', { title: 'Express', user: req.user });
-});
+router.get('/', messageController.showMessages);
 
 router.get('/signup', signUpController.signUp);
 router.post('/signup', signUpController.createUser);
