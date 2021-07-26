@@ -4,14 +4,15 @@ const { body, validationResult } = require('express-validator');
 exports.showMessages = async (req, res, next) => {
   try {
     if (req.user) {
-      const messages = await Message.find({}).populate('author');
-      res
-        .render('index', { messages: messages, user: true })
+      const messages = await Message.find({})
+        .populate('author')
         .sort({ timestamp: 'desc' });
+      res.render('index', { messages: messages, user: true });
     } else {
       const messages = await Message.find({})
         .select('-author')
         .sort({ timestamp: 'desc' });
+
       res.render('index', { messages: messages, user: false });
     }
   } catch (err) {
