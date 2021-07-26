@@ -11,7 +11,11 @@ block content
           if user
             span(class='message__author') #{message.author.username}
           else
-            a(href='/login' class='message__author') Login to discover.
+            a(href='/login' class='message__author' style='padding:0.25em;') Login to discover.
+            br
+            | or
+            br
+            a(href='/signup' style='padding:0.25em;') Sign Up.
         div(class='message__content')
           div(class='message__header') 
             h4(class='message__title') #{message.messageTitle}
