@@ -9,7 +9,7 @@ block content
       div(class='message-container')
         div(class='message__author-container')
           if user
-            span(class='message__author') #{user}
+            span(class='message__author') #{message.author.username}
           else
             a(href='/login' class='message__author') Login to discover.
         div(class='message__content')

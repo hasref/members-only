@@ -6,7 +6,7 @@ exports.showMessages = async (req, res, next) => {
     if (req.user) {
       const messages = await Message.find({}).populate('author');
       res
-        .render('index', { messages: messages, user: req.user.username })
+        .render('index', { messages: messages, user: true })
         .sort({ timestamp: 'desc' });
     } else {
       const messages = await Message.find({})
