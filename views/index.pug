@@ -22,6 +22,12 @@ block content
             if user
               div(class='message__time') #{message.humanTime}
           div(class='message__body') #{message.messageBody}
+          if user
+            if user.isAdmin
+              div
+                form(action=`${message.url}/delete` method='POST' class='delete-message-form')
+                  // TODO use an icon for delete instead
+                  button(class='delete-message-btn') Delete
     else 
       p There are no messages to show. 
         a(href='/login') Login 

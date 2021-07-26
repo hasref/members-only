@@ -201,3 +201,22 @@ form button:hover {
   font-size: 1.1em;
   line-height: 1.6;
 }
+
+/* delete message btn */
+.delete-message-form {
+  all: revert;
+  float: right;
+  padding: 1em 1em 0.25em 0em;
+}
+
+.delete-message-btn {
+  all: revert;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 0.15em;
+  box-shadow: none;
+
+  background-color: var(--orange-yellow-crayola);
+  padding: 0.25em 0.3em;
+  color: white;
+}

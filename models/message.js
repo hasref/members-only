@@ -8,6 +8,10 @@ const MessageSchema = new mongoose.Schema({
   timestamp: { type: Date, default: Date.now },
 });
 
+MessageSchema.virtual('url').get(function () {
+  return '/message/' + this._id;
+});
+
 MessageSchema.virtual('humanTime').get(function () {
   const now = DateTime.fromJSDate(new Date());
   const messageTime = DateTime.fromJSDate(this.timestamp);

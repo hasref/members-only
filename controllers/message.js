@@ -7,7 +7,7 @@ exports.showMessages = async (req, res, next) => {
       const messages = await Message.find({})
         .populate('author')
         .sort({ timestamp: 'desc' });
-      res.render('index', { messages: messages, user: true });
+      res.render('index', { messages: messages, user: req.user });
     } else {
       const messages = await Message.find({})
         .select('-author')
@@ -60,3 +60,16 @@ exports.createNewMessage = [
     }
   },
 ];
+
+exports.deleteMessage = async (req, res, next) => {
+  try {
+    if (!req.user?.isAdmin) {
+      res.redirect('/');
+    }
+    await Message.findByIdAndDelete(req.params.messageId);
+    res.redirect('/');
+    //
+  } catch (err) {
+    next(err);
+  }
+};

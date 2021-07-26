@@ -10,6 +10,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
 
+// TODO: when requesting a protected route, if not authenticated
+// instead of redirecting to /, respond with 404.
+
 require('dotenv').config();
 mongoose.connect(process.env.DB_URL, {
   useUnifiedTopology: true,

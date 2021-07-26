@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema({
   username: { type: String, minLength: 1, required: true },
   password: { type: String, minLength: 1, required: true },
   membership: { type: String, enum: ['joined', 'member'], required: true },
+  isAdmin: { type: Boolean, default: false },
 });
 
 UserSchema.methods.validPassword = function (password) {

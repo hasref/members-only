@@ -7,7 +7,6 @@ const messageController = require('../controllers/message');
 
 /* GET home page. */
 router.get('/', messageController.showMessages);
-
 router.get('/signup', signUpController.signUp);
 router.post('/signup', signUpController.createUser);
 
@@ -21,5 +20,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/new-message', messageController.newMessage);
 router.post('/createmessage', messageController.createNewMessage);
+
+router.post('/message/:messageId/delete', messageController.deleteMessage);
 
 module.exports = router;
