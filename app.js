@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -34,6 +35,11 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false, // TODO: Read up on this.
     saveUninitialized: true,
+    maxAge: 1000 * 60 * 60 * 24 * 3, // 3 days
+    store: new MongoDBStore({
+      uri: process.env.DB_URL,
+      collection: 'sessions',
+    }),
   })
 );
 
