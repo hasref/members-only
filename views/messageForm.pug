@@ -6,8 +6,14 @@ block content
             h2.text-center New Message 
             div
                 label(for='messageTitle') Title
-                input(id='messageTitle' name='messageTitle')
+                input(id='messageTitle' name='messageTitle' required)
             div
                 label(for='messageBody') Message
-                textarea(id='messageBody' name='messageBody' )
+                textarea(id='messageBody' name='messageBody' required)
             button Submit
+
+            div(class='errors-div')
+                ul
+                    if errors
+                        each error in errors
+                            li #{error.msg}

@@ -5,8 +5,15 @@ block content
             h2.text-center Login
             div
                 label(for='username') Username
-                input(id='username' name='username' )
+                input(id='username' name='username' required)
             div
                 label(for='password') Password
-                input(id='password' name='password' type='password')
+                input(id='password' name='password' type='password' required)
             button Submit
+
+            div(class='errors-div')
+                ul
+                    if errors
+                        each error in errors
+                            li #{error.msg}
+

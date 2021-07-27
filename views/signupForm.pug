@@ -5,18 +5,25 @@ block content
             h2.text-center Sign Up
             div
                 label(for='firstName') First Name
-                input(id='firstName' name='firstName' )
+                - const firstName = submittedData ? submittedData.firstName : ''
+                input(id='firstName' name='firstName' value=firstName required)
             div
                 label(for='familyName') Last Name
-                input(id='familyName' name='familyName' )
+                - const familyName = submittedData ? submittedData.familyName : ''
+                input(id='familyName' name='familyName' value=familyName required)
             div
                 label(for='username') Username
-                input(id='username' name='username' )
+                input(id='username' name='username' required)
             div
                 label(for='password') Password (minimum length: 8)
-                input(id='password' name='password' type='password')
+                input(id='password' name='password' type='password' required)
             div
                 label(id='confirmPassword') Confirm Password
-                input(id='confirmPassword' name='confirmPassword' type='password')
+                input(id='confirmPassword' name='confirmPassword' type='password' required)
             button Submit
 
+            div(class='errors-div')
+                ul
+                    if errors
+                        each error in errors
+                            li #{error.msg}

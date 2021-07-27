@@ -220,3 +220,11 @@ form button:hover {
   padding: 0.25em 0.3em;
   color: white;
 }
+
+/* errors */
+.errors-div {
+  margin-top: 2em;
+  /* background-color: var(--orange-yellow-crayola); */
+  color: var(--burnt-sienna);
+  font-weight: bolder;
+}

@@ -7,13 +7,13 @@ exports.showMessages = async (req, res, next) => {
       const messages = await Message.find({})
         .populate('author')
         .sort({ timestamp: 'desc' });
-      res.render('index', { messages: messages, user: req.user });
+      return res.render('index', { messages: messages, user: req.user });
     } else {
       const messages = await Message.find({})
         .select('-author')
         .sort({ timestamp: 'desc' });
 
-      res.render('index', { messages: messages, user: false });
+      return res.render('index', { messages: messages, user: false });
     }
   } catch (err) {
     next(err);
@@ -23,9 +23,9 @@ exports.showMessages = async (req, res, next) => {
 exports.newMessage = (req, res, next) => {
   // TODO: we could probably do such a check in a dedicated middleware
   if (req.user) {
-    res.render('messageForm', { user: req.user });
+    return res.render('messageForm', { user: req.user });
   } else {
-    res.redirect('/login');
+    return res.redirect('/login');
   }
 };
 
@@ -44,7 +44,7 @@ exports.createNewMessage = [
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(404).json({ errors: errors.array() });
+      return res.render('messageForm', { errors: errors.array() });
     } else {
       new Message({
         messageTitle: req.body.messageTitle,
@@ -54,7 +54,7 @@ exports.createNewMessage = [
       })
         .save()
         .then(() => {
-          res.redirect('/');
+          return res.redirect('/');
         })
         .catch(next);
     }
@@ -64,12 +64,12 @@ exports.createNewMessage = [
 exports.deleteMessage = async (req, res, next) => {
   try {
     if (!req.user?.isAdmin) {
-      res.redirect('/');
+      return res.redirect('/');
     }
     await Message.findByIdAndDelete(req.params.messageId);
-    res.redirect('/');
     //
   } catch (err) {
     next(err);
   }
+  return res.redirect('/');
 };

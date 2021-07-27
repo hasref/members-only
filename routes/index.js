@@ -11,6 +11,9 @@ router.get('/signup', signUpController.signUp);
 router.post('/signup', signUpController.createUser);
 
 router.get('/login', loginController.logIn);
+
+// let's start here
+
 router.post('/login', loginController.logInUser);
 
 router.get('/logout', (req, res) => {

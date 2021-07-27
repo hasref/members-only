@@ -39,7 +39,13 @@ exports.createUser = [
     if (!errors.isEmpty()) {
       // TODO: return filled form
       // with password cleared out
-      return res.status(400).json({ errors: errors.array() });
+      return res.render('signupForm', {
+        submittedData: {
+          firstName: req.body.firstName,
+          familyName: req.body.familyName,
+        },
+        errors: errors.array(),
+      });
     } else {
       // if no errors, create a user in the database and log them in
       try {
