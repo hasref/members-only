@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
   isAdmin: { type: Boolean, default: false },
 });
 
-UserSchema.methods.validPassword = function (password) {
+UserSchema.methods.validPassword = async function (password) {
   return bcrypt
     .compare(password, this.password)
     .then((result) => {
