@@ -228,3 +228,13 @@ form button:hover {
   color: var(--burnt-sienna);
   font-weight: bolder;
 }
+
+/* user list */
+.users-table {
+  margin: 4em auto;
+  width: 20em;
+}
+
+th {
+  text-align: left;
+}

@@ -4,6 +4,7 @@ var router = express.Router();
 const signUpController = require('../controllers/signup');
 const loginController = require('../controllers/login');
 const messageController = require('../controllers/message');
+const adminController = require('../controllers/admin');
 
 /* GET home page. */
 router.get('/', messageController.showMessages);
@@ -25,5 +26,8 @@ router.get('/new-message', messageController.newMessage);
 router.post('/createmessage', messageController.createNewMessage);
 
 router.post('/message/:messageId/delete', messageController.deleteMessage);
+
+// admin panel
+router.get('/adminPanel', adminController.showAdminPanel);
 
 module.exports = router;

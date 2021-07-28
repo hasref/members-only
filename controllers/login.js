@@ -23,7 +23,8 @@ exports.logInUser = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.render('loginForm', { errors: errors.array() });
+      res.render('loginForm', { errors: errors.array() });
+      return;
     }
 
     next();
@@ -32,19 +33,23 @@ exports.logInUser = [
   (req, res, next) => {
     passport.authenticate('local', function (err, user) {
       if (err) {
-        return next(err);
+        next(err);
+        return;
       }
       if (!user) {
-        return res.render('loginForm', {
+        res.render('loginForm', {
           errors: [{ msg: 'username or password is wrong' }],
         });
+        return;
       }
       req.logIn(user, function (err) {
         if (err) {
-          return next(err);
+          next(err);
+          return;
         }
 
-        return res.redirect('/');
+        res.redirect('/');
+        return;
       });
     })(req, res, next);
   },

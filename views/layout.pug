@@ -9,6 +9,8 @@ html
         a(href='/') Members Only
       div.nav-links
         if user
+          if user.isAdmin
+            a(href='/adminPanel' class='flex-right') Admin
           a(href='/logout' class='flex-right') Logout
         else
           a(href='/signup') Sign Up

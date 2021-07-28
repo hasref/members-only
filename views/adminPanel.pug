@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    table(class='users-table')
+        tr
+            th Username
+            th Admin?
+        each user in userList
+            tr
+                td #{user.username}
+                td 
+                    if user.isAdmin
+                        input(type='checkbox' name='isAdmin' checked) 
+                    else 
+                        input(type='checkbox' name='isAdmin' ) 
