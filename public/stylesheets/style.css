@@ -230,11 +230,32 @@ form button:hover {
 }
 
 /* user list */
-.users-table {
+/* Upper limit on usernames / passwords? */
+.users-container {
+  max-width: 40em;
   margin: 4em auto;
-  width: 20em;
+}
+
+.users-table {
+  clear: both;
+  width: 100%;
 }
 
 th {
   text-align: left;
+}
+
+/* search */
+.search-bar {
+  float: left;
+  padding-bottom: 2em;
+}
+
+.search-box {
+  padding: 0.25em 1em;
+}
+
+.user-search-form,
+.user-search-form > * {
+  all: revert;
 }

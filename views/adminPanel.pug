@@ -1,15 +1,37 @@
 extends layout
 
 block content
-    table(class='users-table')
-        tr
-            th Username
-            th Admin?
-        each user in userList
+    div(class='users-container')
+        div(class='search-bar')
+            form(action='/adminPanel/searchForUser' method='POST' class='user-search-form')
+                label(for='usernameToSearch') Search:
+                | #{' '} 
+                input(class='search-box' name='usernameToSearch' id='usernameToSearch' placeholder='username')
+                button Search
+        table(class='users-table')
             tr
-                td #{user.username}
-                td 
-                    if user.isAdmin
-                        input(type='checkbox' name='isAdmin' checked) 
-                    else 
-                        input(type='checkbox' name='isAdmin' ) 
+                th Username
+                th Admin?
+            each user in userList
+                tr
+                    td #{user.username}
+                    td 
+                        if user.isAdmin
+                            input(type='checkbox' name='isAdmin' checked) 
+                        else 
+                            input(type='checkbox' name='isAdmin' ) 
+            else 
+                if msg
+                    div #{msg}
+                else
+                    div Could not find the request user.
+    
+    script.
+        const userSearchElem = document.getElementById('usernameToSearch');
+        userSearchElem.addEventListener('keyup', (event) => {
+            const form = event.currentTarget.parentElement;
+            if (event.code === 13) {
+                form.submit();
+            }
+        });
+

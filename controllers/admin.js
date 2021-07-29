@@ -17,3 +17,25 @@ exports.showAdminPanel = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.searchForUser = async (req, res, next) => {
+  if (!req.user?.isAdmin) {
+    res.redirect('/');
+    return;
+  }
+
+  try {
+    const foundUser = await User.find({ username: req.body.usernameToSearch });
+    if (foundUser) {
+      res.render('adminPanel', { userList: foundUser, user: req.user });
+    } else {
+      res.render('adminPanel', {
+        userList: undefined,
+        user: req.user,
+        msg: `could not find ${req.body.usernameToSearch}`,
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
