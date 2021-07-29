@@ -259,3 +259,8 @@ th {
 .user-search-form > * {
   all: revert;
 }
+
+.is-admin-form,
+.is-admin-form > * {
+  all: revert;
+}

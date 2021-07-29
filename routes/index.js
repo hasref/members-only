@@ -31,4 +31,6 @@ router.post('/message/:messageId/delete', messageController.deleteMessage);
 router.get('/adminPanel', adminController.showAdminPanel);
 router.post('/adminPanel/searchForUser', adminController.searchForUser);
 
+router.post('/adminPanel/makeAdmin/:username', adminController.makeAdmin);
+
 module.exports = router;

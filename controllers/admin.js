@@ -39,3 +39,32 @@ exports.searchForUser = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.makeAdmin = async (req, res, next) => {
+  try {
+    if (!req.user?.isAdmin) {
+      res.redirect('/');
+      return;
+    }
+
+    let user = await User.find({ username: req.params.username });
+    user = user[0]; // username is unique
+
+    const newIsAdmin = req.body.isAdmin === 'on' ? true : false;
+
+    if (user) {
+      user.isAdmin = newIsAdmin;
+      await user.save();
+
+      res.redirect('/adminPanel');
+      return;
+    } else {
+      res.render('adminPanel', {
+        msg: `Could not find user with username ${req.params.username} while trying to change permissions.`,
+      });
+      return;
+    }
+  } catch (err) {
+    next(err);
+  }
+};

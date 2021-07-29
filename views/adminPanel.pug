@@ -17,14 +17,18 @@ block content
                     td #{user.username}
                     td 
                         if user.isAdmin
-                            input(type='checkbox' name='isAdmin' checked) 
+                            form(class='is-admin-form' action=`/adminPanel/makeAdmin/${user.username}` method='POST')
+                                input(type='checkbox' name='isAdmin' checked) 
+                                button Submit
                         else 
-                            input(type='checkbox' name='isAdmin' ) 
+                            form(class='is-admin-form' action=`/adminPanel/makeAdmin/${user.username}` method='POST')
+                                input(type='checkbox' name='isAdmin') 
+                                button Submit
             else 
                 if msg
                     div #{msg}
                 else
-                    div Could not find the request user.
+                    div Could not find the requested user.
     
     script.
         const userSearchElem = document.getElementById('usernameToSearch');
